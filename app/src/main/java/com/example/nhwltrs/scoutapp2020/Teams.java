@@ -48,8 +48,8 @@ public class Teams extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Start New Team activity
-                //Intent newTeam = new Intent(getApplicationContext(), NewTeam.class);
-                //startActivity(newTeam);
+                Intent newTeam = new Intent(getApplicationContext(), NewTeam.class);
+                startActivity(newTeam);
             }
         });
 
