@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Teams" />
-        <activity android:name=".NewTeam"></activity>
+        <activity android:name=".NewTeam" />
+        <activity android:name=".MatchInformation"></activity>
     </application>
 
 </manifest>
