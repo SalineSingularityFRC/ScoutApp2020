@@ -31,14 +31,14 @@ public class BeginningScreen extends AppCompatActivity {
         final ImageView goodImage = (ImageView)findViewById(R.id.goodImageView2);
 
         //Set the listeners for the buttons
-        /*newMatch.setOnClickListener(new View.OnClickListener() {
+        newMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(tag, "Pressed the new game button");
                 Intent teams = new Intent(getApplicationContext(), Teams.class);
                 startActivity(teams);
             }
-        });*/
+        });
 
         /*goodButton.setOnClickListener(new View.OnClickListener() {
             @Override
