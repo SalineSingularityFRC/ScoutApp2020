@@ -51,13 +51,13 @@ public class MatchData extends AppCompatActivity {
         handler = new Handler();
         StartTime = SystemClock.uptimeMillis();
 
-        if(getIntent().hasExtra("Team Number")) {
+       /* if(getIntent().hasExtra("Team Number")) {
             String teamNumberString = getIntent().getExtras().toString();
             teamNumberString = teamNumberString.replace("Bundle[{Team Number=","");
             teamNumberString = teamNumberString.replace("}]", "");
             teamDuringMatchTextView2.setText(teamNumberString);
             teamDuringMatchTextView1.setText(teamNumberString);
-        }
+        }*/
 
         startMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,11 +88,11 @@ public class MatchData extends AppCompatActivity {
     };
 
     private void setUpViewPager(ViewPager viewPager) {
-        /*SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Pregame(), "Pregame");
-        adapter.addFragment(new Sandstorm(this), "Sandstorm");
-        adapter.addFragment(new Teleop(this), "Teleop");
-        viewPager.setAdapter(adapter);*/
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Auton(), "Auton");
+        //adapter.addFragment(new Sandstorm(this), "Sandstorm");
+        //adapter.addFragment(new Teleop(this), "Teleop");
+        viewPager.setAdapter(adapter);
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

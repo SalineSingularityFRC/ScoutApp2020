@@ -67,7 +67,7 @@ public class Teams extends AppCompatActivity {
         list.setAdapter(adapter);
 
         //Bluetooth code goes here
-        for(int i=0;i<DatabaseClass.getTeamDatabaseLength();i++) {
+        /*for(int i=0;i<DatabaseClass.getTeamDatabaseLength();i++) {
             HashMap<String, String> resultsMap = new HashMap<>();
             resultsMap.put("First Line", DatabaseClass.getTeamName(i));
             resultsMap.put("Second Line", String.valueOf(DatabaseClass.getTeamNumber(i)));
@@ -81,6 +81,6 @@ public class Teams extends AppCompatActivity {
             listItems.add(resultsMap);
         }
 
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
     }
 }
