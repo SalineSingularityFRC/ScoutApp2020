@@ -1,9 +1,9 @@
 package com.example.nhwltrs.scoutapp2020;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +49,7 @@ public class NewTeam extends AppCompatActivity {
                     return;
                 }
 
-                //Checks to make sure a team number has been inputed
+                //Checks to make sure a team number has been inputted
                 if (checkTeamNumber.matches("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(NewTeam.this);
 
