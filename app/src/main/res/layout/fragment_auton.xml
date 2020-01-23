@@ -22,8 +22,141 @@
         android:layout_width="200dp"
         android:layout_height="32dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/startingPositionTextView" />
+
+    <CheckBox
+        android:id="@+id/initCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Move outside of Initiation Line"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/startingPositionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/startingPositionTextView" />
+
+    <TextView
+        android:id="@+id/autonBottomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Bottom Port"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/initCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/initCheckBox" />
+
+    <Button
+        android:id="@+id/autonBottomMinus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/counter_rounded_button"
+        android:text="-"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/initCheckBox"
+        app:layout_constraintTop_toTopOf="@+id/autonBottomTextView" />
+
+    <TextView
+        android:id="@+id/autonBottomCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="0"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/autonBottomMinus"
+        app:layout_constraintTop_toTopOf="@+id/autonBottomMinus" />
+
+    <Button
+        android:id="@+id/autonBottomPlus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:text="+"
+        android:background="@drawable/counter_rounded_button"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/autonBottomCounter"
+        app:layout_constraintTop_toTopOf="@+id/autonBottomMinus" />
+
+    <TextView
+        android:id="@+id/autonOuterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:text="Outer Port"
+        app:layout_constraintStart_toStartOf="@id/autonBottomTextView"
+        app:layout_constraintTop_toBottomOf="@id/autonBottomTextView"/>
+
+    <Button
+        android:id="@+id/autonOuterMinus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="-"
+        android:background="@drawable/counter_rounded_button"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/autonBottomMinus"
+        app:layout_constraintTop_toTopOf="@id/autonOuterTextView"/>
+
+    <TextView
+        android:id="@+id/autonOuterCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/autonOuterMinus"
+        app:layout_constraintStart_toStartOf="@id/autonBottomCounter"
+        android:textSize="25sp"
+        android:text = "0"/>
+
+    <Button
+        android:id="@+id/autonOuterPlus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="+"
+        android:background="@drawable/counter_rounded_button"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/autonBottomPlus"
+        app:layout_constraintTop_toTopOf="@id/autonOuterCounter"/>
+
+    <TextView
+        android:id="@+id/autonInnerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:text="Inner Port"
+        app:layout_constraintStart_toStartOf="@id/autonOuterTextView"
+        app:layout_constraintTop_toBottomOf="@id/autonOuterTextView"/>
+
+    <Button
+        android:id="@+id/autonInnerMinus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="-"
+        android:background="@drawable/counter_rounded_button"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/autonOuterMinus"
+        app:layout_constraintTop_toTopOf="@id/autonInnerTextView"/>
+
+    <TextView
+        android:id="@+id/autonInnerCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/autonInnerMinus"
+        app:layout_constraintStart_toStartOf="@id/autonOuterCounter"
+        android:textSize="25sp"
+        android:text = "0"/>
+
+    <Button
+        android:id="@+id/autonInnerPlus"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="+"
+        android:background="@drawable/counter_rounded_button"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/autonOuterPlus"
+        app:layout_constraintTop_toTopOf="@id/autonInnerCounter"/>
 
 </android.support.constraint.ConstraintLayout>

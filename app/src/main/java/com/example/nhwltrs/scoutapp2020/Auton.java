@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,18 +73,41 @@ public class Auton extends Fragment {
         //  Movement Checkbox
         //----------------------------------------------------------------------------------------------------------
 
+        final CheckBox initCheckBox = (CheckBox)view.findViewById(R.id.initCheckBox);
+
+        initCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Database code
+                if(initCheckBox.isChecked()) {
+                    //Tell the database
+                }
+                else {
+                    //Tell the database
+                }
+            }
+        });
 
         //----------------------------------------------------------------------------------------------------------
         //  Bottom Port Counter
         //----------------------------------------------------------------------------------------------------------
 
+        Counter bottom = new Counter((Button)view.findViewById(R.id.autonBottomPlus),(Button)view.findViewById(R.id.autonBottomMinus),
+                (TextView)view.findViewById(R.id.autonBottomCounter));
+
         //----------------------------------------------------------------------------------------------------------
         //  Outer Port Counter
         //----------------------------------------------------------------------------------------------------------
 
+        Counter outer = new Counter((Button)view.findViewById(R.id.autonOuterPlus),(Button)view.findViewById(R.id.autonOuterMinus),
+                (TextView) view.findViewById(R.id.autonOuterCounter));
+
         //----------------------------------------------------------------------------------------------------------
         //  Inner Port Counter
         //----------------------------------------------------------------------------------------------------------
+
+        Counter inner = new Counter((Button)view.findViewById(R.id.autonInnerPlus),(Button)view.findViewById(R.id.autonInnerMinus),
+                (TextView) view.findViewById(R.id.autonInnerCounter));
 
         //----------------------------------------------------------------------------------------------------------
         return view;
