@@ -2,6 +2,7 @@ package com.example.nhwltrs.scoutapp2020;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,11 @@ import android.view.ViewGroup;
 
 public class TeleOp extends Fragment {
     private static final String TAG = "TeleOp";
+
+    //Variables to send to the database
+    Counter bottom;
+    Counter outer;
+    Counter inner;
 
     public TeleOp() {
         // Required empty public constructor
@@ -28,8 +34,10 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 if (rotation.isChecked()) {
                     // DB magic ~~
+                    DatabaseClass.setRotationControl(true);
                 } else {
                     // More DB magic
+                    DatabaseClass.setRotationControl(false);
                 }
             }
         });
@@ -40,8 +48,10 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 if (pos.isChecked()) {
                     // DB magic !!
+                    DatabaseClass.setPositionControl(true);
                 } else {
                     // Different DB magic
+                    DatabaseClass.setPositionControl(false);
                 }
             }
         });
@@ -54,19 +64,43 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 if (hang.isChecked()) {
                     // DB *** magic ***
+                    DatabaseClass.setHang(true);
                     level.setClickable(true);
                 } else {
                     // DB magic once more
+                    DatabaseClass.setHang(false);
+                    DatabaseClass.setLevel(false);
                     level.setChecked(false);
                     level.setClickable(false);
                 }
             }
         });
 
-        Counter bottom = new Counter((Button)view.findViewById(R.id.teleBottomUp), (Button)view.findViewById(R.id.teleBottomDown), (TextView)view.findViewById(R.id.teleBottomDisplay));
-        Counter outer = new Counter((Button)view.findViewById(R.id.teleOuterUp), (Button)view.findViewById(R.id.teleOuterDown), (TextView)view.findViewById(R.id.teleOuterDisplay));
-        Counter inner = new Counter((Button)view.findViewById(R.id.teleInnerUp), (Button)view.findViewById(R.id.teleInnerDown), (TextView)view.findViewById(R.id.teleInnerDisplay));
+        level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(level.isChecked()) {
+                    DatabaseClass.setLevel(true);
+                }
+                else {
+                    DatabaseClass.setLevel(false);
+                }
+            }
+        });
+
+        bottom = new Counter((Button)view.findViewById(R.id.teleBottomUp), (Button)view.findViewById(R.id.teleBottomDown), (TextView)view.findViewById(R.id.teleBottomDisplay));
+        outer = new Counter((Button)view.findViewById(R.id.teleOuterUp), (Button)view.findViewById(R.id.teleOuterDown), (TextView)view.findViewById(R.id.teleOuterDisplay));
+        inner = new Counter((Button)view.findViewById(R.id.teleInnerUp), (Button)view.findViewById(R.id.teleInnerDown), (TextView)view.findViewById(R.id.teleInnerDisplay));
 
         return view;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        DatabaseClass.setTeleopBottom(bottom.get_count());
+        DatabaseClass.setTeleopOuter(outer.get_count());
+        DatabaseClass.setTeleopInner(inner.get_count());
     }
 }
