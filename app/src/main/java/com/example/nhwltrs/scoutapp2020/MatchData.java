@@ -29,6 +29,7 @@ public class MatchData extends AppCompatActivity {
     TextView matchTimer;
     TextView teamDuringMatchTextView1;
     TextView teamDuringMatchTextView2;
+    Button endMatch;
     boolean started = false;
 
     @Override
@@ -47,6 +48,7 @@ public class MatchData extends AppCompatActivity {
         teamDuringMatchTextView1 = (TextView) findViewById(R.id.teamDuringMatchTextView1);
         teamDuringMatchTextView2 = (TextView) findViewById(R.id.teamDuringMatchTextView2);
         final Button startMatch = (Button) findViewById(R.id.matchStartButton);
+        endMatch = (Button) findViewById(R.id.matchEndButton);
 
         handler = new Handler();
         StartTime = SystemClock.uptimeMillis();
@@ -68,6 +70,14 @@ public class MatchData extends AppCompatActivity {
                 started = true;
             }
         });
+
+        endMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseClass.finishMatch();
+                finish();
+            }
+        });
     }
 
     public Runnable runnable = new Runnable() {
@@ -80,6 +90,7 @@ public class MatchData extends AppCompatActivity {
             MilliSeconds = MilliSeconds / 1000;
             if (timeLeft < 1) {
                 matchTimer.setText("Match Over!");
+                endMatch.setVisibility(View.VISIBLE);
             } else {
                 matchTimer.setText(timeLeft + "");
             }
