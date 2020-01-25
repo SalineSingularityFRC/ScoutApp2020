@@ -63,9 +63,9 @@ public class TeleOp extends Fragment {
             }
         });
 
-        Counter bottom = new Counter((Button)view.findViewById(R.id.teleBottomDown), (Button)view.findViewById(R.id.teleBottomUp), (TextView)view.findViewById(R.id.teleBottomDisplay));
-        Counter outer = new Counter((Button)view.findViewById(R.id.teleOuterDown), (Button)view.findViewById(R.id.teleOuterUp), (TextView)view.findViewById(R.id.teleOuterDisplay));
-        Counter inner = new Counter((Button)view.findViewById(R.id.teleInnerDown), (Button)view.findViewById(R.id.teleInnerUp), (TextView)view.findViewById(R.id.teleInnerDisplay));
+        Counter bottom = new Counter((Button)view.findViewById(R.id.teleBottomUp), (Button)view.findViewById(R.id.teleBottomDown), (TextView)view.findViewById(R.id.teleBottomDisplay));
+        Counter outer = new Counter((Button)view.findViewById(R.id.teleOuterUp), (Button)view.findViewById(R.id.teleOuterDown), (TextView)view.findViewById(R.id.teleOuterDisplay));
+        Counter inner = new Counter((Button)view.findViewById(R.id.teleInnerUp), (Button)view.findViewById(R.id.teleInnerDown), (TextView)view.findViewById(R.id.teleInnerDisplay));
 
         return view;
     }

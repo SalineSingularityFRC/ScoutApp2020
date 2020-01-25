@@ -16,9 +16,9 @@ public class Capabilities extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tele_op, container, false);
+        View view = inflater.inflate(R.layout.fragment_capabilities, container, false);
 
-        final CheckBox collect = (CheckBox)view.findViewById(R.id.capCollect);
+        final CheckBox collect = (CheckBox) view.findViewById(R.id.capCollect);
         collect.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (collect.isChecked()) {
@@ -40,8 +40,8 @@ public class Capabilities extends Fragment {
             }
         });
 
-        Counter upper = new Counter((Button)view.findViewById(R.id.capUpperDown), (Button)view.findViewById(R.id.capUpperUp), (TextView)view.findViewById(R.id.capUpperDisplay));
-        Counter lower = new Counter((Button)view.findViewById(R.id.capLowerDown), (Button)view.findViewById(R.id.capLowerUp), (TextView)view.findViewById(R.id.capLowerDisplay));
+        Counter upper = new Counter((Button)view.findViewById(R.id.capUpperUp), (Button)view.findViewById(R.id.capUpperDown), (TextView)view.findViewById(R.id.capUpperDisplay));
+        Counter lower = new Counter((Button)view.findViewById(R.id.capLowerUp), (Button)view.findViewById(R.id.capLowerDown), (TextView)view.findViewById(R.id.capLowerDisplay));
 
         return view;
     }

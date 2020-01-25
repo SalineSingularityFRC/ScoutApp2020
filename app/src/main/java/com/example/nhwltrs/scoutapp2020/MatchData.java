@@ -102,7 +102,6 @@ public class MatchData extends AppCompatActivity {
     private void setUpViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Auton(), "Auton");
-        //adapter.addFragment(new Sandstorm(this), "Sandstorm");
         adapter.addFragment(new TeleOp(), "Teleop");
         adapter.addFragment(new Capabilities(), "Capabilities");
         viewPager.setAdapter(adapter);
