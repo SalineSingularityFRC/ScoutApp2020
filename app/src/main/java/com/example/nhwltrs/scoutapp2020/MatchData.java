@@ -49,6 +49,7 @@ public class MatchData extends AppCompatActivity {
         teamDuringMatchTextView2 = (TextView) findViewById(R.id.teamDuringMatchTextView2);
         final Button startMatch = (Button) findViewById(R.id.matchStartButton);
         endMatch = (Button) findViewById(R.id.matchEndButton);
+        endMatch.setVisibility(View.INVISIBLE);
 
         handler = new Handler();
         StartTime = SystemClock.uptimeMillis();

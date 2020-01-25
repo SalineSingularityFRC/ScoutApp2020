@@ -48,12 +48,17 @@ public class TeleOp extends Fragment {
 
         /// Hanging check box
         final CheckBox hang = (CheckBox)view.findViewById(R.id.teleHang);
+        final CheckBox level = (CheckBox)view.findViewById(R.id.teleLevel);
+        level.setClickable(false);
         hang.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (hang.isChecked()) {
                     // DB *** magic ***
+                    level.setClickable(true);
                 } else {
                     // DB magic once more
+                    level.setChecked(false);
+                    level.setClickable(false);
                 }
             }
         });
