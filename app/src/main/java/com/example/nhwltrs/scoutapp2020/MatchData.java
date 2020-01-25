@@ -54,13 +54,13 @@ public class MatchData extends AppCompatActivity {
         handler = new Handler();
         StartTime = SystemClock.uptimeMillis();
 
-       /* if(getIntent().hasExtra("Team Number")) {
+        if(getIntent().hasExtra("Team Number")) {
             String teamNumberString = getIntent().getExtras().toString();
             teamNumberString = teamNumberString.replace("Bundle[{Team Number=","");
             teamNumberString = teamNumberString.replace("}]", "");
             teamDuringMatchTextView2.setText(teamNumberString);
             teamDuringMatchTextView1.setText(teamNumberString);
-        }*/
+        }
 
         startMatch.setOnClickListener(new View.OnClickListener() {
             @Override

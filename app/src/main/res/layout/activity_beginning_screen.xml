@@ -30,7 +30,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="116dp"
         android:fontFamily="@font/product_sans"
-        android:text="Saline Singularity 2019 Scouting App"
+        android:text="Saline Singularity 2020 Scouting App"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="40sp"
