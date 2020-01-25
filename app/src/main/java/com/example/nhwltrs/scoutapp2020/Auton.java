@@ -21,6 +21,15 @@ import java.util.List;
 public class Auton extends Fragment {
     private static final String TAG = "Auton";
 
+    //Variables to send to database
+    CheckBox initCheckBox;
+    Spinner startingPos;
+    Counter bottom;
+    Counter outer;
+    Counter inner;
+
+
+
     String location = "";
 
     public Auton() {
@@ -35,7 +44,7 @@ public class Auton extends Fragment {
         //----------------------------------------------------------------------------------------------------------
         //  Starting Position Spinner
         //----------------------------------------------------------------------------------------------------------
-        final Spinner startingPosition = (Spinner) view.findViewById(R.id.startingPositionSpinner);
+        startingPos = (Spinner) view.findViewById(R.id.startingPositionSpinner);
 
         List<String> startingPlaces = new ArrayList<String>();
         startingPlaces.add("Left");
@@ -51,16 +60,16 @@ public class Auton extends Fragment {
             }
         };
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        startingPosition.setAdapter(dataAdapter);
-        startingPosition.setSelection(listSize);
+        startingPos.setAdapter(dataAdapter);
+        startingPos.setSelection(listSize);
 
         //Database stuff for startingPosition spinner
-        startingPosition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        startingPos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String startingPos = startingPosition.getSelectedItem().toString();
+                String startingPosition = startingPos.getSelectedItem().toString();
                 //Method for adding it to the database. Commented out right now because the method isn't yet written
-                //DatabaseClass.setStartingPos(startingPos);
+                DatabaseClass.setStartingPos(startingPosition);
             }
 
             @Override
@@ -73,7 +82,7 @@ public class Auton extends Fragment {
         //  Movement Checkbox
         //----------------------------------------------------------------------------------------------------------
 
-        final CheckBox initCheckBox = (CheckBox)view.findViewById(R.id.initCheckBox);
+        initCheckBox = (CheckBox)view.findViewById(R.id.initCheckBox);
 
         initCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,9 +90,11 @@ public class Auton extends Fragment {
                 //Database code
                 if(initCheckBox.isChecked()) {
                     //Tell the database
+                    DatabaseClass.setAutonMove(true);
                 }
                 else {
                     //Tell the database
+                    DatabaseClass.setAutonMove(false);
                 }
             }
         });
@@ -92,24 +103,35 @@ public class Auton extends Fragment {
         //  Bottom Port Counter
         //----------------------------------------------------------------------------------------------------------
 
-        Counter bottom = new Counter((Button)view.findViewById(R.id.autonBottomPlus),(Button)view.findViewById(R.id.autonBottomMinus),
+        bottom = new Counter((Button)view.findViewById(R.id.autonBottomPlus),(Button)view.findViewById(R.id.autonBottomMinus),
                 (TextView)view.findViewById(R.id.autonBottomCounter));
 
         //----------------------------------------------------------------------------------------------------------
         //  Outer Port Counter
         //----------------------------------------------------------------------------------------------------------
 
-        Counter outer = new Counter((Button)view.findViewById(R.id.autonOuterPlus),(Button)view.findViewById(R.id.autonOuterMinus),
+        outer = new Counter((Button)view.findViewById(R.id.autonOuterPlus),(Button)view.findViewById(R.id.autonOuterMinus),
                 (TextView) view.findViewById(R.id.autonOuterCounter));
 
         //----------------------------------------------------------------------------------------------------------
         //  Inner Port Counter
         //----------------------------------------------------------------------------------------------------------
 
-        Counter inner = new Counter((Button)view.findViewById(R.id.autonInnerPlus),(Button)view.findViewById(R.id.autonInnerMinus),
+        inner = new Counter((Button)view.findViewById(R.id.autonInnerPlus),(Button)view.findViewById(R.id.autonInnerMinus),
                 (TextView) view.findViewById(R.id.autonInnerCounter));
 
         //----------------------------------------------------------------------------------------------------------
         return view;
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        DatabaseClass.setAutonBottom(bottom.get_count());
+        DatabaseClass.setAutonOuter(outer.get_count());
+        DatabaseClass.setAutonInner(inner.get_count());
+    }
+
+
 }
