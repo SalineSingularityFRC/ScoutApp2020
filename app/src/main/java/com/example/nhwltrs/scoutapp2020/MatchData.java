@@ -92,6 +92,7 @@ public class MatchData extends AppCompatActivity {
         adapter.addFragment(new Auton(), "Auton");
         //adapter.addFragment(new Sandstorm(this), "Sandstorm");
         adapter.addFragment(new TeleOp(), "Teleop");
+        adapter.addFragment(new Capabilities(), "Capabilities");
         viewPager.setAdapter(adapter);
     }
 
