@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Teams extends AppCompatActivity {
@@ -66,8 +67,15 @@ public class Teams extends AppCompatActivity {
 
         list.setAdapter(adapter);
 
+        //test code to add class
+        /*HashMap<String, String> resultsMap = new HashMap<>();
+        resultsMap.put("First Line", "Saline Singularity");
+        resultsMap.put("Second Line", "5066");
+        listItems.add(resultsMap);*/
+
+
         //Bluetooth code goes here
-        /*for(int i=0;i<DatabaseClass.getTeamDatabaseLength();i++) {
+        for(int i=0;i<DatabaseClass.getTeamDatabaseLength();i++) {
             HashMap<String, String> resultsMap = new HashMap<>();
             resultsMap.put("First Line", DatabaseClass.getTeamName(i));
             resultsMap.put("Second Line", String.valueOf(DatabaseClass.getTeamNumber(i)));
@@ -81,6 +89,6 @@ public class Teams extends AppCompatActivity {
             listItems.add(resultsMap);
         }
 
-        adapter.notifyDataSetChanged();*/
+        adapter.notifyDataSetChanged();
     }
 }

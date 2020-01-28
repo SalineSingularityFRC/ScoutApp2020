@@ -21,7 +21,7 @@ public class BluetoothClass {
     private Handler handler = new Handler();
     private static String tag = "7G7 Bluetooth";
     private static String macAddress;
-    private static String match = "00:1A:7D:DA:71:13"; //Put the bluetooth address of you Pi server here
+    private static String match = "B8:27:EB:E8:64:53"; //Put the bluetooth address of you Pi server here
     private String pendingData="";
 
     private CommunicationCallback CCB = new CommunicationCallback() {
