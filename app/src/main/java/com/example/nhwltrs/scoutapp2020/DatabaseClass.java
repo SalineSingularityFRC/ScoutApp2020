@@ -135,6 +135,8 @@ public class DatabaseClass {
 
     private static void send(){
         bluetooth.send("{\"matchData\":"+ robotMatchData.toString()+",\"teamData\":"+tempTeamData.toString()+"}");
+        // For the newest and greatest SSSS.py
+        bluetooth.send_byte(new byte[] {'\0'});
     }
 
     public static void createRobotMatch(int teamNumber, String match, boolean onBlue) {

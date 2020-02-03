@@ -162,6 +162,23 @@ public class Bluetooth {
         }
     }
 
+    /// this.send but byte
+    public void send_byte(byte msg){
+        try {
+            out.write(msg);
+        } catch (final IOException e) {
+            connected=false;
+            if(communicationCallback!=null){
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        communicationCallback.onDisconnect(device, e.getMessage());
+                    }
+                });
+            }
+        }
+    }
+
     public List<BluetoothDevice> getPairedDevices(){
         List<BluetoothDevice> devices = new ArrayList<>();
         devices.addAll(bluetoothAdapter.getBondedDevices());

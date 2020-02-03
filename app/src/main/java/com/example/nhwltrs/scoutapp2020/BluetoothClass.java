@@ -88,7 +88,13 @@ public class BluetoothClass {
             bluetooth.connectToAddress(match);
         //pendingData+=data;
         pendingData=data;
+    }
 
+    public void send_byte(byte[] data) {
+        if (pendingData.length() == 0)
+            bluetooth.connectToAddress(match);
+
+        pendingData = new String(data);
     }
 
     public void end(){
