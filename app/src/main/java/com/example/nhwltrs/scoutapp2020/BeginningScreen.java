@@ -47,7 +47,9 @@ public class BeginningScreen extends AppCompatActivity {
             }
         });*/
 
+        Log.i(tag, "Setting up database");
         DatabaseClass.setup(bluetooth);
+        Log.i(tag, "Database set up!");
 
         //Bluetooth code will go here
     }

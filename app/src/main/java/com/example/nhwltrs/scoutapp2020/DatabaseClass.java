@@ -18,12 +18,11 @@ import java.util.ArrayList;
 public class DatabaseClass {
 
     public static BluetoothClass bluetooth;
-    private static JSONObject tempRobotMatchData;
+    private static JSONObject tempRobotMatchData = new JSONObject();
     public static JSONArray robotMatchData = new JSONArray();
     private static JSONArray tempTeamData = new JSONArray();
     private static JSONArray teamData;
     public static String tag = "7G7 Bluetooth";
-
 
 
     public static void setup(BluetoothClass bluetooth) {
@@ -33,10 +32,11 @@ public class DatabaseClass {
         String currentJSONString = "";
 
         try {
-            FileInputStream fis = new FileInputStream("teamData");
+            FileInputStream fis = new FileInputStream("teamData.json");
             //FileInputStream fis = bluetooth.activity.openFileInput("teamData");
-            Log.i(tag, fis.toString() + "got the input string");
-            teamData = new JSONArray(fis.read());
+            int dat = fis.read();
+            Log.i(tag, String.format("Dat: %d :: Str: %s", dat, fis.toString()));
+            teamData = new JSONArray(dat);
             /*while( (currentJSONString = fis.read()) != null) {
                 JSONObject currentObject = new JSONObject(currentJSONString);
 
@@ -45,16 +45,20 @@ public class DatabaseClass {
             Log.i(tag, "finished the fis.read()");
             fis.close();
         } catch (FileNotFoundException e) {
+            Log.e(tag, "Got exception!");
             try {
-                FileOutputStream fos = bluetooth.activity.openFileOutput("teamData", Context.MODE_PRIVATE);
-                fos.write("".getBytes());
+                FileOutputStream fos = bluetooth.activity.openFileOutput("teamData.json", Context.MODE_PRIVATE);
+                //fos.write("".getBytes());
                 fos.close();
-                FileInputStream fis = bluetooth.activity.openFileInput("teamData");
+                FileInputStream fis = bluetooth.activity.openFileInput("teamData.json");
+                int dat = fis.read();
+                Log.i(tag, String.format("Data: %d :: String: %s", dat, fis.toString()));
                 teamData=new JSONArray(fis.read());
                 fis.close();
             } catch (IOException | JSONException e1) {
                 e1.printStackTrace();
             }
+            e.printStackTrace();
 
         } catch (JSONException | IOException e) {
             e.printStackTrace();
@@ -128,8 +132,8 @@ public class DatabaseClass {
             e.printStackTrace();
             return;
         }
-        robotMatchData= new JSONArray();
-        tempTeamData= new JSONArray();
+        robotMatchData = new JSONArray();
+        tempTeamData = new JSONArray();
 
     }
 
@@ -160,15 +164,16 @@ public class DatabaseClass {
                     "\"floorCollection\":false," +
                     "\"trench\":false," +
                     "\"upperBay\":0," +
-                    "\"lowerBay\":0," +
+                    "\"lowerBay\":0" +
                     "}");
         } catch(JSONException e){
+            Log.e(tag, "Failed to create robot match");
             e.printStackTrace();
         }
     }
 
     public static void setStartingPos(String pos){
-        try{
+        try {
             tempRobotMatchData.put("startingPos", pos);
         } catch(JSONException e){
             e.printStackTrace();
