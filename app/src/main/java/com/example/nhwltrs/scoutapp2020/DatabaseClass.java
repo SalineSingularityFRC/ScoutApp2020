@@ -26,7 +26,7 @@ public class DatabaseClass {
 
 
     public static void setup(BluetoothClass bluetooth) {
-        DatabaseClass.bluetooth=bluetooth;
+        DatabaseClass.bluetooth = bluetooth;
 
         ArrayList jsonObjectArray = new ArrayList();
         String currentJSONString = "";
@@ -53,7 +53,7 @@ public class DatabaseClass {
                 FileInputStream fis = bluetooth.activity.openFileInput("teamData.json");
                 int dat = fis.read();
                 Log.i(tag, String.format("Data: %d :: String: %s", dat, fis.toString()));
-                teamData=new JSONArray(fis.read());
+                teamData = new JSONArray(fis.read());
                 fis.close();
             } catch (IOException | JSONException e1) {
                 e1.printStackTrace();
@@ -66,9 +66,9 @@ public class DatabaseClass {
         }
     }
 
-    public static void makeTeam(int teamNumber, String teamName){
+    public static void makeTeam(int teamNumber, String teamName) {
         try {
-            tempTeamData.put(new JSONObject("{"+
+            tempTeamData.put(new JSONObject("{" +
                     "\"team\":" + teamNumber + "," +
                     "\"name\":\"" + teamName + "\"" +
                     "}"));
@@ -78,7 +78,7 @@ public class DatabaseClass {
         }
     }
 
-    public static int getTeamNumber(int index){
+    public static int getTeamNumber(int index) {
         try {
             return teamData.getJSONObject(index).getInt("team");
         } catch (JSONException e) {
@@ -96,7 +96,7 @@ public class DatabaseClass {
         return "Error";
     }
 
-    public static int getTeamDatabaseLength(){
+    public static int getTeamDatabaseLength() {
         return teamData.length();
     }
 
@@ -118,17 +118,17 @@ public class DatabaseClass {
         return "Error";
     }
 
-    public static int getLocalTeamDatabaseLength(){
+    public static int getLocalTeamDatabaseLength() {
         return tempTeamData.length();
     }
 
-    public static void dataSent(String data){
+    public static void dataSent(String data) {
         try {
-            teamData=new JSONArray(data);
+            teamData = new JSONArray(data);
             FileOutputStream fos = bluetooth.activity.openFileOutput("teamData", bluetooth.activity.MODE_PRIVATE);
             fos.write(teamData.toString().getBytes());
             fos.close();
-        }catch (JSONException | IOException e){
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
             return;
         }
@@ -137,10 +137,11 @@ public class DatabaseClass {
 
     }
 
-    private static void send(){
-        bluetooth.send("{\"matchData\":"+ robotMatchData.toString()+",\"teamData\":"+tempTeamData.toString()+"}");
+    private static void send() {
+        bluetooth.send("{\"matchData\":" + robotMatchData.toString() + ",\"teamData\":" + tempTeamData.toString() + "}");
+        Log.i(tag, "Sent data " + robotMatchData.toString());
         // For the newest and greatest SSSS.py
-        bluetooth.send_byte(new byte[] {'\0'});
+        bluetooth.send_byte(new byte[]{'\0'});
     }
 
     public static void createRobotMatch(int teamNumber, String match, boolean onBlue) {
@@ -148,7 +149,7 @@ public class DatabaseClass {
             tempRobotMatchData = new JSONObject("{" +
                     "\"team\":" + teamNumber + "," +
                     "\"matchID\":\"" + match + "\"," +
-                    "\"onBlue\":"+onBlue+"," +
+                    "\"onBlue\":" + onBlue + "," +
                     "\"startingPos\":Left," +
                     "\"autonMove\":false," +
                     "\"autonBottom\":0," +
@@ -166,22 +167,22 @@ public class DatabaseClass {
                     "\"upperBay\":0," +
                     "\"lowerBay\":0" +
                     "}");
-        } catch(JSONException e){
+        } catch (JSONException e) {
             Log.e(tag, "Failed to create robot match");
             e.printStackTrace();
         }
     }
 
-    public static void setStartingPos(String pos){
+    public static void setStartingPos(String pos) {
         try {
             tempRobotMatchData.put("startingPos", pos);
-        } catch(JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     public static void setAutonMove(boolean move) {
-        try{
+        try {
             tempRobotMatchData.put("autonMove", move + "");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -197,12 +198,30 @@ public class DatabaseClass {
         }
     }
 
+    public static int getAutonBottom() {
+        try {
+            return tempRobotMatchData.getInt("autonBottom");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static void setAutonOuter(int num) {
         try {
             tempRobotMatchData.put("autonOuter",num + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getAutonOuter() {
+        try {
+            return tempRobotMatchData.getInt("autonOuter");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static void setAutonInner(int num) {
@@ -213,12 +232,30 @@ public class DatabaseClass {
         }
     }
 
+    public static int getAutonInner() {
+        try {
+            return tempRobotMatchData.getInt("autonInner");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static void setTeleopBottom(int num) {
         try {
             tempRobotMatchData.put("teleopBottom", num + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getTeleopBottom() {
+        try {
+            return tempRobotMatchData.getInt("teleopBottom");
+        } catch(JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static void setTeleopOuter(int num) {
@@ -229,12 +266,30 @@ public class DatabaseClass {
         }
     }
 
+    public static int getTeleopOuter() {
+        try {
+            return tempRobotMatchData.getInt("teleopOuter");
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static void setTeleopInner(int num) {
         try {
             tempRobotMatchData.put("teleopInner", num + "");
         } catch(JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getTeleopInner() {
+        try {
+            return tempRobotMatchData.getInt("teleopInner");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static void setRotationControl(boolean rot) {
@@ -293,12 +348,30 @@ public class DatabaseClass {
         }
     }
 
+    public static int getUpperBay() {
+        try {
+            return tempRobotMatchData.getInt("upperBay");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static void setLowerBay(int num) {
         try {
             tempRobotMatchData.put("lowerBay", num + "");
         } catch(JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getLowerBay() {
+        try {
+            return tempRobotMatchData.getInt("lowerBay");
+        } catch(JSONException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static void finishMatch(){

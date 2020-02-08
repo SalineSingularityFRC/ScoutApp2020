@@ -84,6 +84,7 @@ public class BluetoothClass {
     }
 
     public void send(String data){
+        Log.i(tag,"Entered the send method in bluetooth");
         if(pendingData.length()==0)
             bluetooth.connectToAddress(match);
         //pendingData+=data;

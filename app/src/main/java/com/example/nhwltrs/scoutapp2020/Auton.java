@@ -105,6 +105,24 @@ public class Auton extends Fragment {
 
         bottom = new Counter((Button)view.findViewById(R.id.autonBottomPlus),(Button)view.findViewById(R.id.autonBottomMinus),
                 (TextView)view.findViewById(R.id.autonBottomCounter));
+        bottom.setCount(DatabaseClass.getAutonBottom());
+        bottom.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottom.inc(1);
+                bottom.display();
+                DatabaseClass.setAutonBottom(bottom.get_count());
+            }
+        });
+        bottom.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bottom.get_count() > 0)
+                    bottom.dec(1);
+                bottom.display();
+                DatabaseClass.setAutonBottom(bottom.get_count());
+            }
+        });
 
         //----------------------------------------------------------------------------------------------------------
         //  Outer Port Counter
@@ -112,6 +130,24 @@ public class Auton extends Fragment {
 
         outer = new Counter((Button)view.findViewById(R.id.autonOuterPlus),(Button)view.findViewById(R.id.autonOuterMinus),
                 (TextView) view.findViewById(R.id.autonOuterCounter));
+        outer.setCount(DatabaseClass.getAutonOuter());
+        outer.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                outer.inc(1);
+                outer.display();
+                DatabaseClass.setAutonOuter(outer.get_count());
+            }
+        });
+        outer.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(outer.get_count() > 0)
+                    outer.dec(1);
+                outer.display();
+                DatabaseClass.setAutonOuter(outer.get_count());
+            }
+        });
 
         //----------------------------------------------------------------------------------------------------------
         //  Inner Port Counter
@@ -119,6 +155,24 @@ public class Auton extends Fragment {
 
         inner = new Counter((Button)view.findViewById(R.id.autonInnerPlus),(Button)view.findViewById(R.id.autonInnerMinus),
                 (TextView) view.findViewById(R.id.autonInnerCounter));
+        inner.setCount(DatabaseClass.getAutonInner());
+        inner.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inner.inc(1);
+                inner.display();
+                DatabaseClass.setAutonInner(inner.get_count());
+            }
+        });
+        inner.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(inner.get_count() > 0)
+                    inner.dec(1);
+                inner.display();
+                DatabaseClass.setAutonInner(inner.get_count());
+            }
+        });
 
         //----------------------------------------------------------------------------------------------------------
         return view;
@@ -128,9 +182,9 @@ public class Auton extends Fragment {
     public void onStop() {
         super.onStop();
 
-        DatabaseClass.setAutonBottom(bottom.get_count());
+        /*DatabaseClass.setAutonBottom(bottom.get_count());
         DatabaseClass.setAutonOuter(outer.get_count());
-        DatabaseClass.setAutonInner(inner.get_count());
+        DatabaseClass.setAutonInner(inner.get_count());*/
     }
 
 

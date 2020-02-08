@@ -19,7 +19,6 @@ public class BeginningScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         //Create the page and set the layout to the page
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginning_screen);
@@ -57,11 +56,12 @@ public class BeginningScreen extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.i(tag, "Started the beginning screen");
 
         bluetooth.setup();
-
         if(!started){
             bluetooth.send("{\"teamData\":[],\"matchData\":[]}");
+            bluetooth.send_byte(new byte[] {'\0'});
             started=true;
         }
 
@@ -71,7 +71,7 @@ public class BeginningScreen extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        Log.i(tag, "Destroyed the beginning screen");
         //More bluetooth code
         bluetooth.end();
     }

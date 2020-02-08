@@ -89,8 +89,66 @@ public class TeleOp extends Fragment {
         });
 
         bottom = new Counter((Button)view.findViewById(R.id.teleBottomUp), (Button)view.findViewById(R.id.teleBottomDown), (TextView)view.findViewById(R.id.teleBottomDisplay));
+        bottom.setCount(DatabaseClass.getTeleopBottom());
+        bottom.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottom.inc(1);
+                bottom.display();
+                DatabaseClass.setAutonBottom(bottom.get_count());
+            }
+        });
+        bottom.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bottom.get_count() > 0)
+                    bottom.dec(1);
+                bottom.display();
+                DatabaseClass.setAutonBottom(bottom.get_count());
+            }
+        });
+
         outer = new Counter((Button)view.findViewById(R.id.teleOuterUp), (Button)view.findViewById(R.id.teleOuterDown), (TextView)view.findViewById(R.id.teleOuterDisplay));
+        outer.setCount(DatabaseClass.getTeleopOuter());
+        outer.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                outer.inc(1);
+                outer.display();
+                DatabaseClass.setAutonOuter(outer.get_count());
+            }
+        });
+        outer.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(outer.get_count() > 0)
+                    outer.dec(1);
+                outer.display();
+                DatabaseClass.setAutonOuter(outer.get_count());
+            }
+        });
+
         inner = new Counter((Button)view.findViewById(R.id.teleInnerUp), (Button)view.findViewById(R.id.teleInnerDown), (TextView)view.findViewById(R.id.teleInnerDisplay));
+        inner.setCount(DatabaseClass.getTeleopInner());
+        inner.inc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inner.inc(1);
+                inner.display();
+                DatabaseClass.setAutonInner(inner.get_count());
+            }
+        });
+        inner.dec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(inner.get_count() > 0)
+                    inner.dec(1);
+                inner.display();
+                DatabaseClass.setAutonInner(inner.get_count());
+            }
+        });
+
+
 
         return view;
     }
@@ -99,8 +157,8 @@ public class TeleOp extends Fragment {
     public void onStop() {
         super.onStop();
 
-        DatabaseClass.setTeleopBottom(bottom.get_count());
+        /*DatabaseClass.setTeleopBottom(bottom.get_count());
         DatabaseClass.setTeleopOuter(outer.get_count());
-        DatabaseClass.setTeleopInner(inner.get_count());
+        DatabaseClass.setTeleopInner(inner.get_count());*/
     }
 }

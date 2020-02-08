@@ -29,12 +29,19 @@ public class Counter {
     public int get_count() { return this.count; }
 
     /// Increment count
-    public void inc(int a) { this.count += a; }
+    public void inc(int a) {
+        this.count += a;
+    }
 
     /// Deincrement count
     public void dec(int a) {
         if (this.count < 1) return;
         this.count -= a;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+        this.counter.setText(String.format("%d",this.count));
     }
 
     /// Display count in this.counter
