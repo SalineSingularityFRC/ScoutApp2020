@@ -95,7 +95,7 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 bottom.inc(1);
                 bottom.display();
-                DatabaseClass.setAutonBottom(bottom.get_count());
+                DatabaseClass.setTeleopBottom(bottom.get_count());
             }
         });
         bottom.dec.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class TeleOp extends Fragment {
                 if(bottom.get_count() > 0)
                     bottom.dec(1);
                 bottom.display();
-                DatabaseClass.setAutonBottom(bottom.get_count());
+                DatabaseClass.setTeleopBottom(bottom.get_count());
             }
         });
 
@@ -115,7 +115,7 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 outer.inc(1);
                 outer.display();
-                DatabaseClass.setAutonOuter(outer.get_count());
+                DatabaseClass.setTeleopOuter(outer.get_count());
             }
         });
         outer.dec.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class TeleOp extends Fragment {
                 if(outer.get_count() > 0)
                     outer.dec(1);
                 outer.display();
-                DatabaseClass.setAutonOuter(outer.get_count());
+                DatabaseClass.setTeleopOuter(outer.get_count());
             }
         });
 
@@ -135,7 +135,7 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 inner.inc(1);
                 inner.display();
-                DatabaseClass.setAutonInner(inner.get_count());
+                DatabaseClass.setTeleopInner(inner.get_count());
             }
         });
         inner.dec.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +144,7 @@ public class TeleOp extends Fragment {
                 if(inner.get_count() > 0)
                     inner.dec(1);
                 inner.display();
-                DatabaseClass.setAutonInner(inner.get_count());
+                DatabaseClass.setTeleopInner(inner.get_count());
             }
         });
 

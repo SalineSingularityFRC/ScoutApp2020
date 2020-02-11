@@ -140,8 +140,9 @@ public class DatabaseClass {
     private static void send() {
         bluetooth.send("{\"matchData\":" + robotMatchData.toString() + ",\"teamData\":" + tempTeamData.toString() + "}");
         Log.i(tag, "Sent data " + robotMatchData.toString());
+
         // For the newest and greatest SSSS.py
-        bluetooth.send_byte(new byte[]{'\0'});
+        //bluetooth.send_byte(new byte[] {'\0'});
     }
 
     public static void createRobotMatch(int teamNumber, String match, boolean onBlue) {
@@ -183,7 +184,7 @@ public class DatabaseClass {
 
     public static void setAutonMove(boolean move) {
         try {
-            tempRobotMatchData.put("autonMove", move + "");
+            tempRobotMatchData.put("autonMove", Boolean.toString(move));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -192,7 +193,7 @@ public class DatabaseClass {
 
     public static void setAutonBottom(int num) {
         try {
-            tempRobotMatchData.put("autonBottom", num + "");
+            tempRobotMatchData.put("autonBottom", Integer.toString(num));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -209,7 +210,7 @@ public class DatabaseClass {
 
     public static void setAutonOuter(int num) {
         try {
-            tempRobotMatchData.put("autonOuter",num + "");
+            tempRobotMatchData.put("autonOuter",Integer.toString(num));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -226,7 +227,7 @@ public class DatabaseClass {
 
     public static void setAutonInner(int num) {
         try {
-            tempRobotMatchData.put("autonInner",num + "");
+            tempRobotMatchData.put("autonInner",Integer.toString(num));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -243,7 +244,7 @@ public class DatabaseClass {
 
     public static void setTeleopBottom(int num) {
         try {
-            tempRobotMatchData.put("teleopBottom", num + "");
+            tempRobotMatchData.put("teleopBottom", Integer.toString(num));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -260,7 +261,7 @@ public class DatabaseClass {
 
     public static void setTeleopOuter(int num) {
         try {
-            tempRobotMatchData.put("teleopOuter", num + "");
+            tempRobotMatchData.put("teleopOuter", Integer.toString(num));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -277,7 +278,7 @@ public class DatabaseClass {
 
     public static void setTeleopInner(int num) {
         try {
-            tempRobotMatchData.put("teleopInner", num + "");
+            tempRobotMatchData.put("teleopInner", Integer.toString(num));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -294,7 +295,7 @@ public class DatabaseClass {
 
     public static void setRotationControl(boolean rot) {
         try {
-            tempRobotMatchData.put("rotationControl", rot + "");
+            tempRobotMatchData.put("rotationControl", Boolean.toString(rot));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -302,7 +303,7 @@ public class DatabaseClass {
 
     public static void setPositionControl(boolean pos) {
         try {
-            tempRobotMatchData.put("positionControl", pos + "");
+            tempRobotMatchData.put("positionControl", Boolean.toString(pos));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -310,7 +311,7 @@ public class DatabaseClass {
 
     public static void setHang(boolean hang) {
         try {
-            tempRobotMatchData.put("hang", hang + "");
+            tempRobotMatchData.put("hang", Boolean.toString(hang));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -318,7 +319,7 @@ public class DatabaseClass {
 
     public static void setLevel(boolean lvl) {
         try {
-            tempRobotMatchData.put("level", lvl + "");
+            tempRobotMatchData.put("level", Boolean.toString(lvl));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -326,7 +327,7 @@ public class DatabaseClass {
 
     public static void setFloorCollection(boolean col) {
         try {
-            tempRobotMatchData.put("floorCollection", col + "");
+            tempRobotMatchData.put("floorCollection", Boolean.toString(col));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -334,7 +335,7 @@ public class DatabaseClass {
 
     public static void setTrench(boolean cap) {
         try {
-            tempRobotMatchData.put("trench", cap + "");
+            tempRobotMatchData.put("trench", Boolean.toString(cap));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -342,7 +343,7 @@ public class DatabaseClass {
 
     public static void setUpperBay(int num) {
         try {
-            tempRobotMatchData.put("upperBay", num + "");
+            tempRobotMatchData.put("upperBay", Integer.toString(num));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -359,7 +360,7 @@ public class DatabaseClass {
 
     public static void setLowerBay(int num) {
         try {
-            tempRobotMatchData.put("lowerBay", num + "");
+            tempRobotMatchData.put("lowerBay", Integer.toString(num));
         } catch(JSONException e) {
             e.printStackTrace();
         }
@@ -376,10 +377,11 @@ public class DatabaseClass {
 
     public static void finishMatch(){
         if(tempRobotMatchData==null){
+            Log.e(tag, "tempRobotMatchData is null. Weird.");
             return;
         }
         robotMatchData.put(tempRobotMatchData);
         tempRobotMatchData=null;
-        send();
+        DatabaseClass.send();
     }
 }

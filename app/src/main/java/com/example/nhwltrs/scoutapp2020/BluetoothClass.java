@@ -53,7 +53,7 @@ public class BluetoothClass {
 
         @Override
         public void onConnectError(BluetoothDevice device, String message) {
-            Log.e(tag,"Failed to connect: " + message);
+            Log.e(tag,"Caught connection error: " + message);
             reconnect();
         }
     };
@@ -89,13 +89,22 @@ public class BluetoothClass {
             bluetooth.connectToAddress(match);
         //pendingData+=data;
         pendingData=data;
+
     }
 
     public void send_byte(byte[] data) {
         if (pendingData.length() == 0)
             bluetooth.connectToAddress(match);
 
-        pendingData = new String(data);
+        pendingData += new String(data);
+        Log.i(tag, "Disconnecting");
+        bluetooth.disconnect();
+    }
+
+    /// Set the pending data without actually sending to the pi
+    public void set_pending_data(String data) {
+        if (this.pendingData.length() == 0) bluetooth.connectToAddress(match);
+        this.pendingData = data;
     }
 
     public void end(){

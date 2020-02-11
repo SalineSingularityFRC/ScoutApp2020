@@ -61,7 +61,8 @@ public class BeginningScreen extends AppCompatActivity {
         bluetooth.setup();
         if(!started){
             bluetooth.send("{\"teamData\":[],\"matchData\":[]}");
-            bluetooth.send_byte(new byte[] {'\0'});
+            //bluetooth.send_byte(new byte[] {'\0'});
+            //bluetooth.set_pending_data("{\"teamData\":[],\"matchData\":[]}");
             started=true;
         }
 
