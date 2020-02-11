@@ -148,25 +148,25 @@ public class DatabaseClass {
     public static void createRobotMatch(int teamNumber, String match, boolean onBlue) {
         try {
             tempRobotMatchData = new JSONObject("{" +
-                    "\"team\":" + teamNumber + "," +
+                    "\"team\":\"" + teamNumber + "\"," +
                     "\"matchID\":\"" + match + "\"," +
-                    "\"onBlue\":" + onBlue + "," +
-                    "\"startingPos\":Left," +
-                    "\"autonMove\":false," +
-                    "\"autonBottom\":0," +
-                    "\"autonOuter\":0," +
-                    "\"autonInner\":0," +
-                    "\"teleopBottom\":0," +
-                    "\"teleopOuter\":0," +
-                    "\"teleopInner\":0," +
-                    "\"rotationControl\":false," +
-                    "\"positionControl\":false," +
-                    "\"hang\":false," +
-                    "\"level\":false," +
-                    "\"floorCollection\":false," +
-                    "\"trench\":false," +
-                    "\"upperBay\":0," +
-                    "\"lowerBay\":0" +
+                    "\"onBlue\":\"" + onBlue + "\"," +
+                    "\"startingPos\":\"Left\"," +
+                    "\"autonMove\":\"false\"," +
+                    "\"autonBottom\":\"0\"," +
+                    "\"autonOuter\":\"0\"," +
+                    "\"autonInner\":\"0\"," +
+                    "\"teleopBottom\":\"0\"," +
+                    "\"teleopOuter\":\"0\"," +
+                    "\"teleopInner\":\"0\"," +
+                    "\"rotationControl\":\"false\"," +
+                    "\"positionControl\":\"false\"," +
+                    "\"hang\":\"false\"," +
+                    "\"level\":\"false\"," +
+                    "\"floorCollection\":\"false\"," +
+                    "\"trench\":\"false\"," +
+                    "\"upperBay\":\"0\"," +
+                    "\"lowerBay\":\"0\"" +
                     "}");
         } catch (JSONException e) {
             Log.e(tag, "Failed to create robot match");

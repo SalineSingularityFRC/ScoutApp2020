@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.nhwltrs.scoutapp2020.R;
 
@@ -51,6 +52,9 @@ public class BeginningScreen extends AppCompatActivity {
         Log.i(tag, "Database set up!");
 
         //Bluetooth code will go here
+
+        final TextView versionNumber = (TextView)findViewById(R.id.versionNumber);
+        versionNumber.setText("Version 1.0");
     }
 
     @Override
