@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeleOp">
+
+    <Button
+        android:id="@+id/teleBottomDown"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="-"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintBottom_toBottomOf="@id/teleBottomName"
+        app:layout_constraintTop_toTopOf="@id/teleBottomName"
+        app:layout_constraintEnd_toStartOf="@id/teleBottomDisplay"
+        android:layout_marginEnd="32dp"/>
+
+    <TextView
+        android:id="@+id/teleBottomDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/teleBottomUp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toTopOf="@id/teleBottomDown"
+        app:layout_constraintBottom_toBottomOf="@id/teleBottomDown"/>
+
+    <Button
+        android:id="@+id/teleBottomUp"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="+"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintTop_toTopOf="@id/teleBottomDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="40dp"/>
+
+    <Button
+        android:id="@+id/teleOuterDown"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="-"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintStart_toStartOf="@id/teleBottomDown"
+        app:layout_constraintTop_toTopOf="@id/teleOuterName"
+        app:layout_constraintBottom_toBottomOf="@id/teleOuterName"/>
+
+    <Button
+        android:id="@+id/teleOuterUp"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="+"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintStart_toStartOf="@id/teleBottomUp"
+        app:layout_constraintTop_toTopOf="@id/teleOuterDisplay"/>
+
+    <TextView
+        android:id="@+id/teleOuterDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="@id/teleOuterDown"
+        app:layout_constraintBottom_toBottomOf="@id/teleOuterDown"
+        app:layout_constraintStart_toStartOf="@id/teleBottomDisplay"/>
+
+    <TextView
+        android:id="@+id/teleOuterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Outer Port"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@id/teleBottomName"
+        app:layout_constraintTop_toBottomOf="@id/teleBottomName"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/teleInnerDown"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="-"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintTop_toTopOf="@id/teleInnerName"
+        app:layout_constraintBottom_toBottomOf="@id/teleInnerName"
+        app:layout_constraintStart_toStartOf="@id/teleOuterDown"/>
+
+    <Button
+        android:id="@+id/teleInnerUp"
+        android:layout_width="44dp"
+        android:layout_height="38dp"
+        android:text="+"
+        android:textSize="25sp"
+        android:background="@drawable/endgame_rounded_button"
+        app:layout_constraintTop_toTopOf="@id/teleInnerDisplay"
+        app:layout_constraintStart_toStartOf="@id/teleOuterUp"/>
+
+    <TextView
+        android:id="@+id/teleInnerDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/teleOuterDisplay"
+        app:layout_constraintTop_toTopOf="@id/teleInnerDown"
+        app:layout_constraintBottom_toBottomOf="@id/teleInnerDown"/>
+
+    <TextView
+        android:id="@+id/teleInnerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inner Port"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/teleOuterName"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@id/teleOuterName"/>
+
+    <TextView
+        android:id="@+id/teleBottomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Bottom Port"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/dividerLine1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/teleInnerName"
+        android:layout_marginTop="30dp"/>
+
+    <CheckBox
+        android:id="@+id/teleRotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
+        android:text="Rotational Control"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/teleInnerName"
+        app:layout_constraintTop_toBottomOf="@id/dividerLine1" />
+
+    <CheckBox
+        android:id="@+id/telePos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
+        android:text="Positional Control"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/telePark"
+        app:layout_constraintStart_toStartOf="@id/teleRotation"
+        app:layout_constraintTop_toBottomOf="@id/teleRotation" />
+
+    <View
+        android:id="@+id/dividerLine2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginEnd="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="395dp" />
+
+    <CheckBox
+        android:id="@+id/teleHang"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
+        android:text="Hanging"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/telePark"
+        tools:layout_editor_absoluteY="410dp" />
+
+    <CheckBox
+        android:id="@+id/teleLevel"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:text="Level"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/teleHang"
+        app:layout_constraintTop_toBottomOf="@id/teleHang" />
+
+    <CheckBox
+        android:id="@+id/telePark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Parking"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/telePos"
+        tools:layout_editor_absoluteY="353dp" />
+</android.support.constraint.ConstraintLayout>

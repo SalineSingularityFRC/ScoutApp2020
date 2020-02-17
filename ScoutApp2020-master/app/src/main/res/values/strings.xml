@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ScoutApp2020</string>
+    <string name="tab_text_1">Auton</string>
+    <string name="tab_text_2">Teleop</string>
+    <string name="tab_text_3">Capabilities</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
