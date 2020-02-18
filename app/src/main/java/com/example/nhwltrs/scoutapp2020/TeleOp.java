@@ -34,10 +34,10 @@ public class TeleOp extends Fragment {
             public void onClick(View v) {
                 if (park.isChecked()) {
                     // DB magic ~~
-                    DatabaseClass.setRotationControl(true);
+                    DatabaseClass.setParking(true);
                 } else {
                     // More DB magic
-                    DatabaseClass.setRotationControl(false);
+                    DatabaseClass.setParking(false);
                 }
             }
         });

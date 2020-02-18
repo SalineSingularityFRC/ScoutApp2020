@@ -166,7 +166,8 @@ public class DatabaseClass {
                     "\"floorCollection\":\"false\"," +
                     "\"trench\":\"false\"," +
                     "\"upperBay\":\"0\"," +
-                    "\"lowerBay\":\"0\"" +
+                    "\"lowerBay\":\"0\"," +
+                    "\"parking\":\"false\"" +
                     "}");
         } catch (JSONException e) {
             Log.e(tag, "Failed to create robot match");
