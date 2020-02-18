@@ -54,7 +54,7 @@ public class BeginningScreen extends AppCompatActivity {
         //Bluetooth code will go here
 
         final TextView versionNumber = (TextView)findViewById(R.id.versionNumber);
-        versionNumber.setText("Version 1.0");
+        versionNumber.setText("Version 1.2");
     }
 
     @Override
