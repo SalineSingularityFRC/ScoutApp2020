@@ -15,6 +15,14 @@ public class MatchInformation extends AppCompatActivity {
     boolean blueTeam;
     boolean abort = false;
 
+    /// Make sure string does not contain letters
+    boolean is_valid_input(String str) {
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) return false;
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Creates the Match Information activity
@@ -40,9 +48,9 @@ public class MatchInformation extends AppCompatActivity {
                     blueTeam = false;
                 }
 
-                //Checks to make sure a match number is put in
+                // Checks to make sure a match number is put in
                 String checkInput = matchNumberEditText.getText().toString();
-                if (checkInput.matches("")) {
+                if (is_valid_input(checkInput)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MatchInformation.this);
 
                     builder.setCancelable(false);
