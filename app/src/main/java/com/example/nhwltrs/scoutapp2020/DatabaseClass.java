@@ -308,7 +308,14 @@ public class DatabaseClass {
             e.printStackTrace();
         }
     }
+    public static void setParking(boolean parking) {
+        try {
+            tempRobotMatchData.put("parking", Boolean.toString(parking));
+        } catch(JSONException e) {
+            e.printStackTrace();
+        }
 
+    }
     public static void setHang(boolean hang) {
         try {
             tempRobotMatchData.put("hang", Boolean.toString(hang));

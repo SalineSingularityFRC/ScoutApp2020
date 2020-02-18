@@ -149,57 +149,72 @@
         android:id="@+id/teleRotation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
         android:text="Rotational Control"
         android:textSize="25sp"
-        android:paddingLeft="15dp"
-        android:paddingBottom="3dp"
         app:layout_constraintStart_toStartOf="@id/teleInnerName"
-        app:layout_constraintTop_toBottomOf="@id/dividerLine1"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintTop_toBottomOf="@id/dividerLine1" />
 
     <CheckBox
         android:id="@+id/telePos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
         android:text="Positional Control"
         android:textSize="25sp"
-        android:paddingLeft="15dp"
-        android:paddingBottom="3dp"
-        app:layout_constraintTop_toBottomOf="@id/teleRotation"
+        app:layout_constraintBottom_toTopOf="@+id/telePark"
         app:layout_constraintStart_toStartOf="@id/teleRotation"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintTop_toBottomOf="@id/teleRotation" />
 
     <View
         android:id="@+id/dividerLine2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
+        android:layout_marginEnd="8dp"
         android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/telePos"
-        android:layout_marginTop="30dp" />
+        tools:layout_editor_absoluteY="395dp" />
 
     <CheckBox
         android:id="@+id/teleHang"
-        android:layout_width="wrap_content"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="15dp"
         android:text="Hanging"
         android:textSize="25sp"
-        android:paddingLeft="15dp"
-        android:paddingBottom="3dp"
-        app:layout_constraintStart_toStartOf="@id/telePos"
-        app:layout_constraintTop_toBottomOf="@id/dividerLine2"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintStart_toStartOf="@+id/telePark"
+        tools:layout_editor_absoluteY="410dp" />
 
     <CheckBox
         android:id="@+id/teleLevel"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
         android:text="Level"
         android:textSize="20sp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintTop_toBottomOf="@id/teleHang"
-        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/teleHang"
-        android:layout_marginStart="50dp"/>
+        app:layout_constraintTop_toBottomOf="@id/teleHang" />
+
+    <CheckBox
+        android:id="@+id/telePark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Parking"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/telePos"
+        tools:layout_editor_absoluteY="353dp" />
 </android.support.constraint.ConstraintLayout>

@@ -29,6 +29,20 @@ public class TeleOp extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tele_op, container, false);
 
         /// Rotation check box obj and listener
+        final CheckBox park = (CheckBox)view.findViewById(R.id.telePark);
+        park.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (park.isChecked()) {
+                    // DB magic ~~
+                    DatabaseClass.setRotationControl(true);
+                } else {
+                    // More DB magic
+                    DatabaseClass.setRotationControl(false);
+                }
+            }
+        });
+
+        /// Rotation check box obj and listener
         final CheckBox rotation = (CheckBox)view.findViewById(R.id.teleRotation);
         rotation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
