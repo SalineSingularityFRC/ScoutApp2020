@@ -10,28 +10,13 @@
     tools:context="com.example.nhwltrs.scoutapp2020.MatchData">
 
     <TextView
-        android:id="@+id/matchTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="150"
-        android:textSize="50sp"
-        android:textColor="#212121"
-        android:fontFamily="@font/product_sans"
-        app:layout_constraintBottom_toBottomOf="@+id/matchStartButton"
-        app:layout_constraintEnd_toEndOf="@+id/matchStartButton"
-        app:layout_constraintStart_toStartOf="@+id/matchStartButton"
-        app:layout_constraintTop_toTopOf="@+id/matchStartButton"/>
-
-    <TextView
         android:id="@+id/teamDuringMatchTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
         android:fontFamily="@font/product_sans"
         android:text="Team"
         android:textColor="#767676"
         android:textSize="50sp"
-        app:layout_constraintEnd_toStartOf="@id/matchTimer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
@@ -39,13 +24,11 @@
         android:id="@+id/teamDuringMatchTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
         android:fontFamily="@font/product_sans"
         android:text="Team"
         android:textColor="#767676"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/matchTimer"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
     <android.support.v4.view.ViewPager
@@ -56,21 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchStartButton" />
-
-    <Button
-        android:id="@+id/matchStartButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/endgame_rounded_button"
-        android:text="START MATCH"
-        android:textSize="20sp"
-        android:fontFamily="@font/product_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+        app:layout_constraintTop_toBottomOf="@+id/matchEndButton" />
 
     <Button
         android:id="@+id/matchEndButton"

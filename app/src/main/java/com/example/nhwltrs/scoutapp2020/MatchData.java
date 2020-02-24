@@ -24,9 +24,9 @@ public class MatchData extends AppCompatActivity {
     private ViewPager mViewPager;
     long StartTime, MillisecondTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
-    int Seconds;
-    int MilliSeconds;
-    TextView matchTimer;
+    //int Seconds;
+    //int MilliSeconds;
+    //TextView matchTimer;
     TextView teamDuringMatchTextView1;
     TextView teamDuringMatchTextView2;
     Button endMatch;
@@ -44,12 +44,12 @@ public class MatchData extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        matchTimer  = (TextView) findViewById(R.id.matchTimer);
+        // matchTimer  = (TextView) findViewById(R.id.matchTimer);
         teamDuringMatchTextView1 = (TextView) findViewById(R.id.teamDuringMatchTextView1);
         teamDuringMatchTextView2 = (TextView) findViewById(R.id.teamDuringMatchTextView2);
-        final Button startMatch = (Button) findViewById(R.id.matchStartButton);
+        //final Button startMatch = (Button) findViewById(R.id.matchStartButton);
         endMatch = (Button) findViewById(R.id.matchEndButton);
-        endMatch.setVisibility(View.INVISIBLE);
+        //endMatch.setVisibility(View.INVISIBLE);
 
         handler = new Handler();
         StartTime = SystemClock.uptimeMillis();
@@ -62,15 +62,15 @@ public class MatchData extends AppCompatActivity {
             teamDuringMatchTextView1.setText(teamNumberString);
         }
 
-        startMatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startMatch.setVisibility(View.INVISIBLE);
-                StartTime = SystemClock.uptimeMillis();
-                handler.postDelayed(runnable, 0);
-                started = true;
-            }
-        });
+//        startMatch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startMatch.setVisibility(View.INVISIBLE);
+//                StartTime = SystemClock.uptimeMillis();
+//                handler.postDelayed(runnable, 0);
+//                started = true;
+//            }
+//        });
 
         endMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,23 +81,23 @@ public class MatchData extends AppCompatActivity {
         });
     }
 
-    public Runnable runnable = new Runnable() {
-        public void run() {
-            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-            UpdateTime = TimeBuff + MillisecondTime;
-            Seconds = (int) (UpdateTime / 1000);
-            int timeLeft = 1 - Seconds;
-            MilliSeconds = (int) (UpdateTime % 1000);
-            MilliSeconds = MilliSeconds / 1000;
-            if (timeLeft < 1) {
-                matchTimer.setText("Match Over!");
-                endMatch.setVisibility(View.VISIBLE);
-            } else {
-                matchTimer.setText(timeLeft + "");
-            }
-            handler.postDelayed(this, 0);
-        }
-    };
+//    public Runnable runnable = new Runnable() {
+//        public void run() {
+//            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
+//            UpdateTime = TimeBuff + MillisecondTime;
+//            Seconds = (int) (UpdateTime / 1000);
+//            int timeLeft = 1 - Seconds;
+//            MilliSeconds = (int) (UpdateTime % 1000);
+//            MilliSeconds = MilliSeconds / 1000;
+//            if (timeLeft < 1) {
+//                matchTimer.setText("Match Over!");
+//                endMatch.setVisibility(View.VISIBLE);
+//            } else {
+//                matchTimer.setText(timeLeft + "");
+//            }
+//            handler.postDelayed(this, 0);
+//        }
+//    };
 
     private void setUpViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -138,7 +138,7 @@ public class MatchData extends AppCompatActivity {
             return mFragmentList.size();
         }
     }
-    public int getTimer(){
-        return Seconds;
-    }
+//    public int getTimer(){
+//        return Seconds;
+//    }
 }
