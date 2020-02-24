@@ -1,6 +1,8 @@
 package com.example.nhwltrs.scoutapp2020;
 
+import android.content.DialogInterface;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
@@ -39,7 +41,7 @@ public class MatchData extends AppCompatActivity {
         teamDuringMatchTextView2 = findViewById(R.id.teamDuringMatchTextView2);
 
         // Send data
-        endMatch = (Button)findViewById(R.id.matchEndButton);
+        endMatch = findViewById(R.id.matchEndButton);
 
         handler = new Handler();
 
@@ -54,8 +56,27 @@ public class MatchData extends AppCompatActivity {
         endMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseClass.finishMatch();
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MatchData.this);
+
+                builder.setCancelable(false);
+                builder.setTitle("Are you sure?");
+                builder.setMessage("You are about to send in your data. Are you done collecting it?");
+
+                builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DatabaseClass.finishMatch();
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                });
+                builder.show();
+
             }
         });
     }

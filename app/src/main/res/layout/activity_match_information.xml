@@ -27,7 +27,7 @@
         android:layout_marginLeft="16dp"
         android:ems="10"
         android:fontFamily="@font/product_sans"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/matchNumberTextView"
         app:layout_constraintStart_toEndOf="@+id/matchNumberTextView" />
 
