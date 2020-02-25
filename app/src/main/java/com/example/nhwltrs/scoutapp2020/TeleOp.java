@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +20,8 @@ public class TeleOp extends Fragment {
     Counter outer;
     Counter inner;
 
-    public TeleOp() {
-        // Required empty public constructor
-    }
+    // Required empty public constructor
+    public TeleOp() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,55 +33,71 @@ public class TeleOp extends Fragment {
         park.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (park.isChecked()) {
-                    // DB magic ~~
                     DatabaseClass.setParking(true);
                 } else {
-                    // More DB magic
                     DatabaseClass.setParking(false);
                 }
             }
         });
 
         /// Rotation check box obj and listener
-        final CheckBox rotation = (CheckBox)view.findViewById(R.id.teleRotation);
+        final CheckBox rotation = view.findViewById(R.id.teleRotation);
         rotation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (rotation.isChecked()) {
-                    // DB magic ~~
                     DatabaseClass.setRotationControl(true);
                 } else {
-                    // More DB magic
                     DatabaseClass.setRotationControl(false);
                 }
             }
         });
 
         /// Position check box
-        final CheckBox pos = (CheckBox)view.findViewById(R.id.telePos);
+        final CheckBox pos = view.findViewById(R.id.telePos);
         pos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (pos.isChecked()) {
-                    // DB magic !!
                     DatabaseClass.setPositionControl(true);
                 } else {
-                    // Different DB magic
                     DatabaseClass.setPositionControl(false);
                 }
             }
         });
 
-        /// Hanging check box
-        final CheckBox hang = (CheckBox)view.findViewById(R.id.teleHang);
-        final CheckBox level = (CheckBox)view.findViewById(R.id.teleLevel);
+        /// Hanging + level check boxes
+        final CheckBox hang = view.findViewById(R.id.teleHang);
+        final CheckBox level = view.findViewById(R.id.teleLevel);
+
         level.setClickable(false);
+        level.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                 * This is a gross, dirty hack!!
+                 * For some reason, executing level.setClickable(false) after declaring level doesn't work.
+                 * Because of this, this checks to make sure that hang is clicked before setting the check.
+                 */
+                if (!hang.isChecked()) {
+                    level.setChecked(false);
+                    level.setClickable(false);
+                    return;
+                }
+
+                // Actual database editing
+                if(level.isChecked()) {
+                    DatabaseClass.setLevel(true);
+                } else {
+                    DatabaseClass.setLevel(false);
+                }
+            }
+        });
+
         hang.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (hang.isChecked()) {
-                    // DB *** magic ***
                     DatabaseClass.setHang(true);
                     level.setClickable(true);
                 } else {
-                    // DB magic once more
                     DatabaseClass.setHang(false);
                     DatabaseClass.setLevel(false);
                     level.setChecked(false);
@@ -90,17 +106,7 @@ public class TeleOp extends Fragment {
             }
         });
 
-        level.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(level.isChecked()) {
-                    DatabaseClass.setLevel(true);
-                }
-                else {
-                    DatabaseClass.setLevel(false);
-                }
-            }
-        });
+
 
         bottom = new Counter((Button)view.findViewById(R.id.teleBottomUp), (Button)view.findViewById(R.id.teleBottomDown), (TextView)view.findViewById(R.id.teleBottomDisplay));
         bottom.setCount(DatabaseClass.getTeleopBottom());

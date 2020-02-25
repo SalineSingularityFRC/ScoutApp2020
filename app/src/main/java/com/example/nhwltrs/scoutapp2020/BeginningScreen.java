@@ -25,8 +25,8 @@ public class BeginningScreen extends AppCompatActivity {
         setContentView(R.layout.activity_beginning_screen);
 
         //Create all the buttons
-        Button newMatch = (Button)findViewById(R.id.inputDataButton);
-        Button goodButton = (Button)findViewById(R.id.goodButton);
+        Button newMatch = findViewById(R.id.inputDataButton);
+        Button goodButton = findViewById(R.id.goodButton);
 
         final ImageView goodImage = (ImageView)findViewById(R.id.goodImageView2);
 
@@ -54,7 +54,7 @@ public class BeginningScreen extends AppCompatActivity {
         //Bluetooth code will go here
 
         final TextView versionNumber = (TextView)findViewById(R.id.versionNumber);
-        versionNumber.setText("Version 1.4.0");
+        versionNumber.setText("Version 1.4.5");
     }
 
     @Override
